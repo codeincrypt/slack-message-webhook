@@ -9,7 +9,8 @@ app.get('/', (req, res) => {
 	res.json({message:"What are you doing here... "})
 })
 
-app.get('/message-bot', (req, res) => {
+app.post('/message-bot', (req, res) => {
+	let {name, email} = req.body
     try {
         let url = "https://hooks.slack.com/YOUR_CHANNEL_URL"
 
@@ -19,7 +20,7 @@ app.get('/message-bot', (req, res) => {
 					type: 'section',
 					text: {
 						type: 'mrkdwn',
-						text: `Name: *Kartik Kumar Swarnkar*\n\n Email: *kartikkr555@gmail.com*`,
+						text: `Name: *${name}*\n\n Email: *${email}*`,
 					},
 				},
 			],
